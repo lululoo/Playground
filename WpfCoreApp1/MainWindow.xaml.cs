@@ -59,11 +59,32 @@ namespace WpfCoreApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SleepAsync(5000).Wait();
+            var sleepTask = SleepAsync(5000);
+            
+            // This blocks the UI thread.
+            // SleepAsync attempts to resume execution on the UI thread after it sleeps.
+            // = DEADLOCK!
+            // bc SleepAsync will be able to resume execution
+            sleepTask.Wait();
 
             Debug.WriteLine("Done with button click");
 
             myInkCanvas.Height = 50;
+        }
+
+        private void Button_Click_NoDeadlock(object sender, RoutedEventArgs e)
+        {   
+            Task.Run(() => {          
+                // This blocks a worker thread.
+                SleepAsync(5000).Wait();
+
+                Debug.WriteLine("Done with button click");
+
+                // but now this is required since we aren't on the UI thread
+                Dispatcher.Invoke(() => {
+                    myInkCanvas.Height = 50;
+                });
+            });
         }
 
         private async Task SleepAsync(int ms)
