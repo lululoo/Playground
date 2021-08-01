@@ -33,6 +33,7 @@ namespace WpfCoreApp1
 
             this.myInkCanvas.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
 
+            
         }
 
         private void MyCalendar_ChildChanged(object sender, EventArgs e)
