@@ -249,6 +249,8 @@ using namespace System::Diagnostics;
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
+	
+
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
