@@ -34,7 +34,7 @@ namespace WpfCoreApp1
 
             this.myInkCanvas.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
 
-            
+
         }
 
         private void MyCalendar_ChildChanged(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace WpfCoreApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var sleepTask = SleepAsync(5000);
-            
+
             // This blocks the UI thread.
             // SleepAsync attempts to resume execution on the UI thread after it sleeps.
             // = DEADLOCK!
@@ -72,16 +72,70 @@ namespace WpfCoreApp1
             myInkCanvas.Height = 50;
         }
 
+        private void ExceptionTest_Click(object sender, RoutedEventArgs e)
+        {
+            var exceptionTask = ThrowExceptionAsync();
+            //exceptionTask.GetAwaiter().GetResult(); //deadlock!
+            Task.Run(() => {
+                try
+                {
+                    exceptionTask.GetAwaiter().GetResult();
+                    // throws original exception
+                }
+                catch (AggregateException)
+                {
+                    Debug.WriteLine("GetResult: aggregate");
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("GetResult: exception " + e.Message);
+                }
+
+                try
+                {
+                    ThrowExceptionAsync().Wait();
+                    // throws AggregateException
+                }
+                catch (AggregateException)
+                {
+                    Debug.WriteLine("Wait: aggregate");
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Wait: exception " + e.Message);
+                }
+            });
+
+            Task.Run(async () =>
+            {
+                try
+                {
+                    await ThrowExceptionAsync();
+                    // throws original exception
+                }
+                catch (AggregateException)
+                {
+                    Debug.WriteLine("await: aggregate");
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("await: exception " + e.Message);
+                }
+            });
+        }
+
         private void Button_Click_NoDeadlock(object sender, RoutedEventArgs e)
-        {   
-            Task.Run(() => {          
+        {
+            Task.Run(() =>
+            {
                 // This blocks a worker thread.
                 SleepAsync(5000).Wait();
 
                 Debug.WriteLine("Done with button click");
 
                 // but now this is required since we aren't on the UI thread
-                Dispatcher.Invoke(() => {
+                Dispatcher.Invoke(() =>
+                {
                     myInkCanvas.Height = 50;
                 });
             });
@@ -90,8 +144,17 @@ namespace WpfCoreApp1
         private async Task SleepAsync(int ms)
         {
             await Task.Delay(ms); //.ConfigureAwait(false); - this will prevent the next line from running in the same context
-            
+
             Debug.WriteLine("I'm awake");
         }
+
+        private async Task ThrowExceptionAsync()
+        {
+            await SleepAsync(1000);
+
+            throw new Exception("testing");
+        }
+
+
     }
 }
