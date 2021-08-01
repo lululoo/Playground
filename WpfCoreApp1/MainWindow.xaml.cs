@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,22 @@ namespace WpfCoreApp1
                     }
                 };
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SleepAsync(5000).Wait();
+
+            Debug.WriteLine("Done with button click");
+
+            myInkCanvas.Height = 50;
+        }
+
+        private async Task SleepAsync(int ms)
+        {
+            await Task.Delay(ms); //.ConfigureAwait(false); - this will prevent the next line from running in the same context
+            
+            Debug.WriteLine("I'm awake");
         }
     }
 }

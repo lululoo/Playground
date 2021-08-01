@@ -12,7 +12,7 @@
     <StackPanel>
         <InkToolbar x:Name="myToolbar"/>
 
-        <Border Background="Transparent" BorderBrush="Black" BorderThickness="1" 
+        <Border Background="#01FFFFFF" BorderBrush="Black" BorderThickness="1" 
                 Width="600" Height="600">
 
             <InkCanvas x:Name="myCanvas" GotFocus="myCanvas_GotFocus" Height="auto" />
