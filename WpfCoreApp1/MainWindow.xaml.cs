@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,26 @@ namespace WpfCoreApp1
 
             this.myInkCanvas.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
 
+        }
+
+        private void MyCalendar_ChildChanged(object sender, EventArgs e)
+        {
+            WindowsXamlHost windowsXamlHost = (WindowsXamlHost)sender;
+
+            Windows.UI.Xaml.Controls.CalendarView calendarView =
+                (Windows.UI.Xaml.Controls.CalendarView)windowsXamlHost.Child;
+
+            if (calendarView != null)
+            {
+                calendarView.SelectedDatesChanged += (obj, args) =>
+                {
+                    if (args.AddedDates.Count > 0)
+                    {
+                        MessageBox.Show("The user selected a new date: " +
+                            args.AddedDates[0].DateTime.ToString());
+                    }
+                };
+            }
         }
     }
 }

@@ -1,0 +1,9 @@
+namespace WinUI3RuntimeComponent
+{
+    [default_interface]
+    runtimeclass WinUI3Window : Microsoft.UI.Xaml.Controls.Page
+    {
+        WinUI3Window();
+        Int32 MyProperty;
+    }
+}

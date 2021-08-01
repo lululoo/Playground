@@ -32,5 +32,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="WinUI3Control.xaml" />
+    <Page Include="WinUI3Window.xaml" />
   </ItemGroup>
 </Project>

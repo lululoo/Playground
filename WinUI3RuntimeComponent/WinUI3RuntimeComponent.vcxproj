@@ -116,6 +116,10 @@
       <DependentUpon>WinUI3Control.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="WinUI3Window.xaml.h">
+      <DependentUpon>WinUI3Window.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -127,6 +131,10 @@
       <DependentUpon>WinUI3Control.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="WinUI3Window.xaml.cpp">
+      <DependentUpon>WinUI3Window.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Class.idl">
@@ -135,6 +143,10 @@
     </Midl>
     <Midl Include="WinUI3Control.idl">
       <DependentUpon>WinUI3Control.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="WinUI3Window.idl">
+      <DependentUpon>WinUI3Window.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
   </ItemGroup>
@@ -150,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="WinUI3Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WinUI3Window.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

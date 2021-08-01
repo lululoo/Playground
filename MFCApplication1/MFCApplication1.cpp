@@ -240,6 +240,7 @@ END_MESSAGE_MAP()
 
 #include <thread>
 #include <chrono>
+//#include "../WinUI3RuntimeComponent/WinUI3Window.xaml.h"
 using namespace std;
 
 #using "System.dll"
@@ -249,7 +250,7 @@ using namespace System::Diagnostics;
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
-	
+	//winrt::WinUI3RuntimeComponent::implementation::WinUI3Window window;
 
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
