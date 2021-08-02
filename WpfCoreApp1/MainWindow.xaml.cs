@@ -62,7 +62,9 @@ namespace WpfCoreApp1
             var sleepTask = SleepAsync(5000);
 
             // This blocks the UI thread.
-            // SleepAsync attempts to resume execution on the UI thread after it sleeps.
+            // SleepAsync attempts to resume execution of its code below the first await on the UI thread after it sleeps.
+            //      this is to support chaining async methods that access the UI!
+            //      "by default, the current context is captured at the time an asynchronous method is suspended, and that captured context is used to invoke the asynchronous method's continuation upon resumption"
             // = DEADLOCK!
             // bc SleepAsync will be able to resume execution
             sleepTask.Wait();
@@ -143,7 +145,7 @@ namespace WpfCoreApp1
 
         private async Task SleepAsync(int ms)
         {
-            await Task.Delay(ms); //.ConfigureAwait(false); - this will prevent the next line from running in the same context
+            await Task.Delay(ms); //.ConfigureAwait(false); - this will prevent the next line from running in the UI context
 
             Debug.WriteLine("I'm awake");
         }
