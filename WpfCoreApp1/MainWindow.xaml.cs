@@ -28,7 +28,7 @@ namespace WpfCoreApp1
             InitializeComponent();
 
             //var winui3 = new MyWinUI3Window(); //runtime error - com exception
-            var uwp = new UWPLibrary.UWPDialog(); //runtime error The application called an interface that was marshalled for a different thread.
+            //var uwp = new UWPLibrary.UWPDialog(); //runtime error The application called an interface that was marshalled for a different thread.
                                                   // fixed by creating a msix package around the wpf app            
                                                   //uwp.ShowAsync(); // runtime error about it being on some other root
 
@@ -130,8 +130,10 @@ namespace WpfCoreApp1
         {
             Task.Run(() =>
             {
-                // This blocks a worker thread.
-                SleepAsync(5000).Wait();
+                
+                SleepAsync(5000)
+                    //.Wait();  // This blocks the UI thread
+                    .GetAwaiter().GetResult();
 
                 Debug.WriteLine("Done with button click");
 

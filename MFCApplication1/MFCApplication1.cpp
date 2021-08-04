@@ -247,10 +247,36 @@ using namespace std;
 using namespace System;
 using namespace System::Diagnostics;
 
+#include "MyClass.h"
+
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
 	//winrt::WinUI3RuntimeComponent::implementation::WinUI3Window window;
+
+	MyClass a;
+	auto a_mNum = a.GetMemberNum();
+	a_mNum = 10;
+
+	MyClass b;
+	auto b_mNum = b.GetMemberNum();
+	b_mNum = 12;
+
+	CString blah;
+	blah.Format(L"a_mNum %d b_mNum %d", a_mNum, b_mNum);
+	AfxMessageBox(blah);
+
+	auto a_nNum = a.GetNamespaceNum();
+	a_nNum = 14;
+
+	auto b_nNum = b.GetNamespaceNum();
+	b_nNum = 17;
+
+	int* i = new int();
+	blah.Format(L"a_nNum %d b_nNum %d\na_mNum %x a_nNum %x, heap %x", a_nNum, b_nNum, &a_mNum, &a_nNum, i);
+	AfxMessageBox(blah);
+
+	
 
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();

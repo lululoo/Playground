@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="LightBlue">
-        <uwplibrary:TransparentInkCanvas/>
+    <Grid Background="White">
+        <Button>Hello World!</Button>
+            <!--<uwplibrary:TransparentInkCanvas/>-->
     </Grid>
 </Page>
