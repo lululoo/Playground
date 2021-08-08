@@ -223,16 +223,21 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppView.h" />
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ClassView.h" />
+    <ClInclude Include="DocView.h" />
     <ClInclude Include="FileView.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="ICloseable.h" />
+    <ClInclude Include="IShowable.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFCApplication1.h" />
     <ClInclude Include="MFCApplication1Doc.h" />
     <ClInclude Include="MFCApplication1View.h" />
     <ClInclude Include="MyClass.h" />
+    <ClInclude Include="NewsView.h" />
     <ClInclude Include="OutputWnd.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PropertiesWnd.h" />

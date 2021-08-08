@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['hresult_440',['HRESULT',['../struct_i_m_f_c_application1_vtbl.html#ac9591821755603fa424092f92b04e065',1,'IMFCApplication1Vtbl::HRESULT(STDMETHODCALLTYPE *QueryInterface)(IMFCApplication1 *This'],['../struct_i_m_f_c_application1_vtbl.html#a82307a49e66e81180013a6333417be32',1,'IMFCApplication1Vtbl::HRESULT(STDMETHODCALLTYPE *GetTypeInfoCount)(IMFCApplication1 *This'],['../struct_i_m_f_c_application1_vtbl.html#adb6450f80da979726eb01a1a444cc27e',1,'IMFCApplication1Vtbl::HRESULT(STDMETHODCALLTYPE *GetTypeInfo)(IMFCApplication1 *This'],['../struct_i_m_f_c_application1_vtbl.html#aab4231dca6a9293360e7e9e502cf0bef',1,'IMFCApplication1Vtbl::HRESULT(STDMETHODCALLTYPE *GetIDsOfNames)(IMFCApplication1 *This'],['../struct_i_m_f_c_application1_vtbl.html#a5f915c9e5010cf1f61b49f5e31dc008a',1,'IMFCApplication1Vtbl::HRESULT(STDMETHODCALLTYPE *Invoke)(IMFCApplication1 *This']]]
+];

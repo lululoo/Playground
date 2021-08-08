@@ -10,10 +10,9 @@
 #include "resource.h"       // main symbols
 
 
-// CMFCApplication1App:
-// See MFCApplication1.cpp for the implementation of this class
-//
-
+/// <summary>
+/// The test application class
+/// </summary>
 class CMFCApplication1App : public CWinAppEx
 {
 public:

@@ -248,10 +248,15 @@ using namespace System;
 using namespace System::Diagnostics;
 
 #include "MyClass.h"
+#include "NewsView.h"
 
-// App command to run the dialog
+/** App command to run the dialog
+* 
+*/
 void CMFCApplication1App::OnAppAbout()
 {
+	NewsView view;
+
 	//winrt::WinUI3RuntimeComponent::implementation::WinUI3Window window;
 
 	MyClass a;
@@ -282,8 +287,7 @@ void CMFCApplication1App::OnAppAbout()
 	aboutDlg.DoModal();
 }
 
-// CMFCApplication1App customization load/save methods
-
+/// CMFCApplication1App customization load/save methods
 void CMFCApplication1App::PreLoadState()
 {
 	BOOL bNameValid;
@@ -303,12 +307,61 @@ void CMFCApplication1App::LoadCustomState()
 void CMFCApplication1App::SaveCustomState()
 {
 }
+#include <string>
 
+/// <summary>
+/// A rather long description that contains more XML stuff..
+/// <remark>a remark goes here!</remark>
+/// </summary>
+/// <param name="i">some int</param>
+/// <param name="j">surprise, it's another int</param>
+/// <returns>the best object ever</returns>
+string blah(int i, string j)
+{
+	return "hi";
+}
+
+#include <thread>
+#include <atomic>
+
+void WaitForProcess(atomic<bool>& flag)
+{
+	auto process = System::Diagnostics::Process::Start(gcnew String("cmd"), gcnew String("/c ping 127.0.0.1 -n 10 > nul"));
+	process->WaitForExit();
+	flag = true;
+}
+
+/// <summary>
+/// Consistently reproduces the COM Server Busy dialog
+///		more notes can go here like this
+///		dont use <remark>. it doesnt work with doxygen
+/// </summary>
+/// <param name="i">some int</param>
+/// <param name="j">surprise, it's another int</param>
+/// <returns>the best object ever</returns>
+/// more remarks can go here
+/// again, don't use <remark>
+#pragma unmanaged
 void CMFCApplication1App::OnHelpServerbusy()
 {
 	MessageBox(nullptr, L"In about 8s, the server busy dialog will come up", L"", MB_OK);
-	auto process = System::Diagnostics::Process::Start(gcnew String("cmd"), gcnew String("/c ping 127.0.0.1 -n 10 > nul"));
-	process->WaitForExit();
+	
+	EnableWindow(AfxGetMainWnd()->GetSafeHwnd(), FALSE);
+
+	atomic<bool> bDone = false;
+	thread t([&]() {
+		WaitForProcess(bDone);
+	});
+	
+	while (!bDone)
+	{
+		AfxPumpMessage();
+	}
+
+	t.join();
+	EnableWindow(AfxGetMainWnd()->GetSafeHwnd(), TRUE);
+
+	MessageBox(nullptr, L"woo", L"", MB_OK);
 }
 
 
