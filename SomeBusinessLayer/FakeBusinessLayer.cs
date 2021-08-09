@@ -1,5 +1,6 @@
 ﻿using NETStandardLibrary;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SomeBusinessLayer
@@ -22,12 +23,12 @@ namespace SomeBusinessLayer
 
             await MakeWebRequestAsync(token);
 
-            Console.WriteLine("testingz");
+            Debug.WriteLine("testing... zzz");
         }
 
         private async Task MakeWebRequestAsync(string authToken)
         {
-            Console.WriteLine($"faking a web request using authToken: {authToken}");
+            Debug.WriteLine($"faking a web request using authToken: {authToken}");
             await Task.Delay(1000);
         }
     }

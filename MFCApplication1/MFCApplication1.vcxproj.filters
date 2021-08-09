@@ -101,9 +101,6 @@
     <ClCompile Include="LegacyApplicationInterop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InteropFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MFCApplication1.idl">

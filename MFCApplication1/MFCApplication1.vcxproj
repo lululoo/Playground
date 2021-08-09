@@ -102,10 +102,13 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>C:\Users\Master\Source\Repos\Playground\MFCLibrary1;C:\Users\Master\Source\Repos\Playground\WinUI3RuntimeComponent\Generated Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalUsingDirectories>C:\Users\Master\Source\Repos\Playground\SomeBusinessLayer\bin\Debug\netstandard2.0;C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <RegisterOutput>true</RegisterOutput>
+      <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -135,10 +138,13 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>C:\Users\Master\Source\Repos\Playground\MFCLibrary1;C:\Users\Master\Source\Repos\Playground\WinUI3RuntimeComponent\Generated Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalUsingDirectories>C:\Users\Master\Source\Repos\Playground\SomeBusinessLayer\bin\Debug\netstandard2.0;C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <RegisterOutput>true</RegisterOutput>
+      <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -168,12 +174,15 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\Users\Master\Source\Repos\Playground\MFCLibrary1;C:\Users\Master\Source\Repos\Playground\WinUI3RuntimeComponent\Generated Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalUsingDirectories>C:\Users\Master\Source\Repos\Playground\SomeBusinessLayer\bin\Debug\netstandard2.0;C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -203,12 +212,15 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\Users\Master\Source\Repos\Playground\MFCLibrary1;C:\Users\Master\Source\Repos\Playground\WinUI3RuntimeComponent\Generated Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalUsingDirectories>C:\Users\Master\Source\Repos\Playground\SomeBusinessLayer\bin\Debug\netstandard2.0;C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -245,7 +257,6 @@
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="ClassView.cpp" />
     <ClCompile Include="FileView.cpp" />
-    <ClCompile Include="InteropFactory.cpp" />
     <ClCompile Include="LegacyApplicationInterop.cpp">
       <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0</AdditionalUsingDirectories>
       <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Master\Source\Repos\Playground\NETStandardLibrary\bin\Debug\netstandard2.0</AdditionalUsingDirectories>
@@ -310,9 +321,6 @@
     <Image Include="res\userimages.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MFCLibrary1\MFCLibrary1.vcxproj">
-      <Project>{9896730d-24fa-444d-b4e8-ce2ee939f5bf}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\NETStandardLibrary\NETStandardLibrary.csproj">
       <Project>{a0ccf180-44f2-4e1b-95f3-b57143e71ad9}</Project>
     </ProjectReference>

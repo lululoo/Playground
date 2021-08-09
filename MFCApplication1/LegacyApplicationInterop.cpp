@@ -21,7 +21,13 @@ public:
 
 	virtual String^ GetAuthToken()
 	{
-		throw gcnew NotImplementedException();
+		return gcnew String("token");
+		//throw gcnew NotImplementedException();
 		// TODO: insert return statement here
 	}
+};
+
+struct MyLegacyApp
+{
+	LegacyApplicationInterop^& legacyApp;
 };

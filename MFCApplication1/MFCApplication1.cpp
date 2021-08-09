@@ -240,8 +240,13 @@ END_MESSAGE_MAP()
 
 #include <thread>
 #include <chrono>
+#include "LegacyApplicationInterop.cpp"
+#include <FakeBusinessLayerInterop.h>
 //#include "../WinUI3RuntimeComponent/WinUI3Window.xaml.h"
 using namespace std;
+
+#using "SomeBusinessLayer.dll"
+using namespace SomeBusinessLayer;
 
 #using "System.dll"
 using namespace System;
@@ -251,6 +256,11 @@ using namespace System::Diagnostics;
 void CMFCApplication1App::OnAppAbout()
 {
 	//winrt::WinUI3RuntimeComponent::implementation::WinUI3Window window;
+	LegacyApplicationInterop^ app = gcnew LegacyApplicationInterop();
+	//FakeBusinessLayerInterop biz(app);
+	//biz.DoStuffRequiringAuth();
+	FakeBusinessLayer^ biz = gcnew FakeBusinessLayer(app);
+	biz->DoStuffRequiringAuthAsync();
 
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
