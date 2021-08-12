@@ -238,6 +238,8 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
+#include <string>
+#include <corecrt_wstring.h>
 #include <thread>
 #include <chrono>
 #include "LegacyApplicationInterop.cpp"
@@ -245,6 +247,7 @@ END_MESSAGE_MAP()
 //#include "../WinUI3RuntimeComponent/WinUI3Window.xaml.h"
 using namespace std;
 
+//comment these out for faster builds
 #using "SomeBusinessLayer.dll"
 using namespace SomeBusinessLayer;
 
@@ -252,9 +255,29 @@ using namespace SomeBusinessLayer;
 using namespace System;
 using namespace System::Diagnostics;
 
+#include "esig.h"
+#include "efile.h"
+
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
+	Efile efile;
+	efile.Submit();
+	auto ack = efile.GetAcks();
+	wstring acz(to_wstring(ack));
+	AfxMessageBox(acz.c_str());
+
+
+
+	// regular dll
+	Esig esig;
+	auto bal = esig.GetESigBalance();
+
+	wstring balance(to_wstring(bal));
+	AfxMessageBox(balance.c_str());
+
+
+
 	//winrt::WinUI3RuntimeComponent::implementation::WinUI3Window window;
 	LegacyApplicationInterop^ app = gcnew LegacyApplicationInterop();
 	//FakeBusinessLayerInterop biz(app);
@@ -301,3 +324,4 @@ void CMFCApplication1App::OnHelpNotResponding()
 	MessageBox(nullptr, L"In about 5s, click around on the app and it will become Not Responding for about 5s", L"", MB_OK);
 	this_thread::sleep_for(10s);
 }
+

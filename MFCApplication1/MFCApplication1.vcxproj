@@ -108,7 +108,7 @@
       <SubSystem>Windows</SubSystem>
       <RegisterOutput>true</RegisterOutput>
       <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);ClrDll.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -144,7 +144,7 @@
       <SubSystem>Windows</SubSystem>
       <RegisterOutput>true</RegisterOutput>
       <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ClrDll;%(AdditionalDependencies);ClrDll.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -182,7 +182,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
       <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);ClrDll.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -220,7 +220,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
       <AdditionalLibraryDirectories>C:\Users\Master\Source\Repos\Playground\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MFCLibrary1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ClrDll;%(AdditionalDependencies);ClrDll.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -239,6 +239,9 @@
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ClassView.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="efile.h" />
+    <ClInclude Include="esig.h" />
     <ClInclude Include="FileView.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
@@ -321,6 +324,9 @@
     <Image Include="res\userimages.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppX\AppX.vcxproj">
+      <Project>{a96938a4-926c-4455-a1c0-ffcaaae1811d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\NETStandardLibrary\NETStandardLibrary.csproj">
       <Project>{a0ccf180-44f2-4e1b-95f3-b57143e71ad9}</Project>
     </ProjectReference>

@@ -18,20 +18,28 @@
     <ClInclude Include="framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IFakeBusinessLayerInterop.h">
+    <ClInclude Include="AppAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FakeBusinessLayerInterop.h">
+    <ClInclude Include="DoCalcsAndStuff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AppShim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoCalcsAndStuff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ESig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
