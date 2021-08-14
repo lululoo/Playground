@@ -263,9 +263,6 @@ using namespace System::Diagnostics;
 void CMFCApplication1App::OnAppAbout()
 {
 
-
-	PostQuitMessage(1);
-
 	Efile efile;
 	efile.Submit();
 	auto ack = efile.GetAcks();
