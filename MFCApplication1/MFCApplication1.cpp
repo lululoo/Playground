@@ -258,9 +258,12 @@ using namespace System::Diagnostics;
 #include "esig.h"
 #include "efile.h"
 
+
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
+	PostQuitMessage(1);
+
 	Efile efile;
 	efile.Submit();
 	auto ack = efile.GetAcks();
