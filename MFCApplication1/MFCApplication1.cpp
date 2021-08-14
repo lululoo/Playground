@@ -262,6 +262,8 @@ using namespace System::Diagnostics;
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
+
+
 	PostQuitMessage(1);
 
 	Efile efile;

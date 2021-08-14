@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace NetCoreConsoleApp1
 {
@@ -9,7 +10,11 @@ namespace NetCoreConsoleApp1
         static void Main(string[] args)
         {
             var t = new Test();
-            t.Go();
+            //t.Go();
+
+            var prog = new Progress<string>();
+            prog.ProgressChanged += (s,e) => Console.WriteLine(e);
+            t.GetStuffAsync(prog).Wait();
         }
 
 
@@ -17,6 +22,17 @@ namespace NetCoreConsoleApp1
 
     class Test
     {
+        public async Task GetStuffAsync(IProgress<string> progress)
+        {
+            progress.Report("hello");
+            await Task.Delay(10);
+
+            progress.Report("world");
+            await Task.Delay(10);
+
+            progress.Report("bye!");
+        }
+
         public void Go()
         {
             foreach(var i in GenerateInts())
@@ -57,4 +73,6 @@ namespace NetCoreConsoleApp1
             }
         }
     }
+
+
 }
