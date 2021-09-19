@@ -110,6 +110,9 @@
     <ClCompile Include="LegacyApplicationInterop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\ConsoleApplication1\CheapTimedMessageBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MFCApplication1.idl">

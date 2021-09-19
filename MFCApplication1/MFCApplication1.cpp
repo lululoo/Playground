@@ -17,6 +17,36 @@
 #define new DEBUG_NEW
 #endif
 
+static BOOL s_fTimedOut;
+static HWND s_hwndMBOwnerEnable;
+void CALLBACK
+CheapMsgBoxTooLateProc(HWND hWnd, UINT uiMsg, UINT_PTR idEvent, DWORD dwTime)
+{
+	s_fTimedOut = TRUE;
+	if (s_hwndMBOwnerEnable) EnableWindow(s_hwndMBOwnerEnable, TRUE);
+	PostQuitMessage(42); // value not important
+}
+// Warning! Not thread-safe! See discussion.
+int CheapTimedMessageBox(HWND hwndOwner, LPCTSTR ptszText,
+	LPCTSTR ptszCaption, UINT uType, DWORD dwTimeout)
+{
+	s_fTimedOut = FALSE;
+	s_hwndMBOwnerEnable = NULL;
+	if (hwndOwner && IsWindowEnabled(hwndOwner)) {
+		s_hwndMBOwnerEnable = hwndOwner;
+	}
+	UINT idTimer = SetTimer(NULL, 0, dwTimeout, CheapMsgBoxTooLateProc);
+	int iResult = MessageBox(hwndOwner, ptszText, ptszCaption, uType);
+	if (idTimer) KillTimer(NULL, idTimer);
+	if (s_fTimedOut) {			// We timed out
+		MSG msg;
+		// Eat the fake WM_QUIT message we generated
+		PeekMessage(&msg, NULL, WM_QUIT, WM_QUIT, PM_REMOVE);
+		iResult = -1;
+	}
+	return iResult;
+}
+
 
 // CMFCApplication1App
 
@@ -247,6 +277,7 @@ END_MESSAGE_MAP()
 //#include "../WinUI3RuntimeComponent/WinUI3Window.xaml.h"
 using namespace std;
 
+#pragma managed
 //comment these out for faster builds
 #using "SomeBusinessLayer.dll"
 using namespace SomeBusinessLayer;
@@ -262,6 +293,8 @@ using namespace System::Diagnostics;
 // App command to run the dialog
 void CMFCApplication1App::OnAppAbout()
 {
+
+	CheapTimedMessageBox(AfxGetMainWnd()->GetSafeHwnd(), L"hello!", L"caption", MB_OK, 1000);
 
 	Efile efile;
 	efile.Submit();
